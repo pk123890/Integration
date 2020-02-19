@@ -1,0 +1,4 @@
+String funtionName(datatype dataname)
+{
+integrationspecific
+}
