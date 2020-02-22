@@ -23,24 +23,15 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-02-22T08:27:42.466Z[GMT]")
-@Api(value = "spotify", description = "the spotify API")
-public interface SpotifyApi {
+@Api(value = "trello", description = "the trello API")
+public interface TrelloApi {
 
-    @ApiOperation(value = "", nickname = "spotifyGetFollowingGet", notes = "Auto generated using Swagger Inspector", response = String.class, tags={  })
+    @ApiOperation(value = "", nickname = "trelloGetBoardNameGet", notes = "Auto generated using Swagger Inspector", response = String.class, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "Auto generated using Swagger Inspector", response = String.class) })
-    @RequestMapping(value = "/spotify/get_following",
+    @RequestMapping(value = "/trello/get_board_name",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<String> spotifyGetFollowingGet(@ApiParam(value = "") @Valid @RequestParam(value = "type", required = false) String type);
-
-
-    @ApiOperation(value = "", nickname = "spotifyUserDetailsGet", notes = "Auto generated using Swagger Inspector", response = String.class, tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Auto generated using Swagger Inspector", response = String.class) })
-    @RequestMapping(value = "/spotify/user_details",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<String> spotifyUserDetailsGet(@ApiParam(value = "") @Valid @RequestParam(value = "user_id", required = false) String userId);
+    ResponseEntity<String> trelloGetBoardNameGet(@ApiParam(value = "") @Valid @RequestParam(value = "idBoard", required = false) String idBoard);
 
 }

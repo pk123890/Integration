@@ -14,38 +14,28 @@ import javax.servlet.http.HttpServletRequest;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-02-17T10:46:18.555Z[GMT]")
 @Controller
-public class GithubApiController implements GithubApi {
+public class TrelloApiController implements TrelloApi {
     @Autowired
-    GithubProxy githubProxy;
+    TrelloProxy trelloProxy;
 
 
-    private static final Logger log = LoggerFactory.getLogger(GithubApiController.class);
+    private static final Logger log = LoggerFactory.getLogger(TrelloApiController.class);
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public GithubApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public TrelloApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
 
 
-    public ResponseEntity<String> githubCreateRepositoryGet(@ApiParam(value = "") @Valid @RequestParam(value = "body", required = false) java.lang.String body)
+    public ResponseEntity<String> trelloGetBoardNameGet(@ApiParam(value = "") @Valid @RequestParam(value = "idBoard", required = false) java.lang.String idBoard)
 {
-return new ResponseEntity<String>(githubProxy.githubCreateRepositoryGet(body), HttpStatus.OK);
-}
-
-public ResponseEntity<String> githubGetRepositoryGet()
-{
-return new ResponseEntity<String>(githubProxy.githubGetRepositoryGet(), HttpStatus.OK);
-}
-
-public ResponseEntity<String> githubUserDetailsGet()
-{
-return new ResponseEntity<String>(githubProxy.githubUserDetailsGet(), HttpStatus.OK);
+return new ResponseEntity<String>(trelloProxy.trelloGetBoardNameGet(idBoard), HttpStatus.OK);
 }
 
 
