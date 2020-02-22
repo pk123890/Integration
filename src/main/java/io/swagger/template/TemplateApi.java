@@ -17,6 +17,8 @@ import java.lang.reflect.Parameter;
 
 
 
+//TO GENERATE THE CONTROLLER AND PROXY CODE FROM THE TEMPLATE FILES: TemplateName.java & TemplateProxyName.java in THE SPRING PROJECT
+
 public class TemplateApi {
     public static void main(String[] args) throws Exception {
 
@@ -38,7 +40,9 @@ public class TemplateApi {
 
             //Script to generate  PROXY CODE(IntegrationNameProxy.java).
             String proxyContent = IOUtils.toString(new FileReader(new File("TemplateProxyName.java")));
+
             FileWriter proxyFileWriter = new FileWriter(new File("/Users/prateekkoul/Documents/spring-server-generated (1) copy/src/main/java/io/swagger/api/"+iterator.get(integrationName) + "Proxy.java"));
+
             String proxyData = IOUtils.toString(new FileReader(new File("ProxyData.txt")));
             proxyContent=proxyContent.replaceAll("proxyname","\""+((String) iterator.get(integrationName)).toLowerCase()+"\"");
             proxyContent=proxyContent.replaceAll("Proxy",iterator.get(integrationName) + "Proxy");
@@ -67,6 +71,9 @@ public class TemplateApi {
                     Parameter[] parameters = method.getParameters();
                     int j=0;
                     if (parameters.length != 0) {
+
+                        integrate = integrate.replaceAll("datatype", "@ApiParam(value = \"\") @Valid @RequestParam(value = \" "+((RequestParam) method.getParameters()[0].getAnnotations()[2]).value()+"\", required = false) "+method.getParameterTypes()[0].getName());
+                        integrate = integrate.replaceAll("dataname", ((RequestParam) method.getParameters()[0].getAnnotations()[2]).value());
                         for(Parameter parameter:parameters){
                             if(j>0){
                                 stringBuilderParameter.append(",");
@@ -83,7 +90,11 @@ public class TemplateApi {
                         i++;
                         proxy=proxy.replaceAll("parameter","@RequestParam(\""+((RequestParam)method.getParameters()[0].getAnnotations()[2]).value()+"\")"+method.getParameterTypes()[0].getName()+" "+((RequestParam) method.getParameters()[0].getAnnotations()[2]).value());
                     } else {
+
+                        integrate = integrate.replaceAll("datatype dataname", "");
+
                         integrate = integrate.replaceAll("datatype", "");
+
                         integrate = integrate.replaceAll("integrationspecific", "return new ResponseEntity<String>(" + ((String) iterator.get(integrationName)).toLowerCase() + "Proxy." + method.getName() + "(), HttpStatus.OK);");
 
                         proxy=proxy.replaceAll("path","\""+((RequestMapping)classNameInterfaces[0].getMethods()[i].getAnnotations()[2]).value()[0]+"\"");
@@ -108,10 +119,13 @@ public class TemplateApi {
             proxyFileWriter.write(proxyContent);
             proxyFileWriter.close();
 
+
             File myFoo = new File("/Users/prateekkoul/Documents/spring-server-generated (1) copy/src/main/java/io/swagger/api/"+iterator.get(integrationName)+"ApiController.java");
+
             FileWriter fooWriter = new FileWriter(myFoo, false);
             fooWriter.write(content);
             fooWriter.close();
+
 
 
 
@@ -119,7 +133,6 @@ public class TemplateApi {
             integrateString=integrateString.replaceAll("Void","String");
             integrateFile.write(integrateString);
             integrateFile.close();
-
 
         }
     }
