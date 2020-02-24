@@ -33,14 +33,14 @@ public class GithubApiController implements GithubApi {
 
 
 
-    public ResponseEntity<String> githubCreateRepositoryGet(@ApiParam(value = "") @Valid @RequestParam(value = "body", required = false) java.lang.String body)
-{
-return new ResponseEntity<String>(githubProxy.githubCreateRepositoryGet(body), HttpStatus.OK);
-}
-
-public ResponseEntity<String> githubGetRepositoryGet()
+    public ResponseEntity<String> githubGetRepositoryGet()
 {
 return new ResponseEntity<String>(githubProxy.githubGetRepositoryGet(), HttpStatus.OK);
+}
+
+public ResponseEntity<String> githubCreateRepositoryGet(@ApiParam(value = "") @Valid @RequestParam(value = "body", required = false) java.lang.String body)
+{
+return new ResponseEntity<String>(githubProxy.githubCreateRepositoryGet(body), HttpStatus.OK);
 }
 
 public ResponseEntity<String> githubUserDetailsGet()
