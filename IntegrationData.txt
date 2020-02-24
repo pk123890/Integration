@@ -1,4 +1,4 @@
-public ResponseEntity<String> funtionName(datatype)
-{
-integrationspecific
-}
+    public ResponseEntity<String> funtionName(datatype)
+    {
+        integrationspecific
+    }

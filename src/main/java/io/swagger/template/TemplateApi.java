@@ -13,12 +13,8 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 
-//TO GENERATE THE CONTROLLER AND PROXY CODE FROM THE TEMPLATE FILES: TemplateName.java &
-// TemplateProxyName.java in THE SPRING PROJECT
-
-
-//TO GENERATE THE CONTROLLER AND PROXY CODE FROM THE TEMPLATE FILES: TemplateName.java &
-// TemplateProxyName.java in THE SPRING PROJECT
+//TO GENERATE THE CONTROLLER AND PROXY CODE FROM THE TEMPLATE FILES: java.templateController &
+// java.templateProxy in THE SPRING PROJECT
 
 
 public class TemplateApi {
@@ -30,16 +26,12 @@ public class TemplateApi {
     for (Field iterator : fieldList) {
 
       //Script to generate  CONTROLLER CODE(IntegrationNameAPI.java).
-      String content = IOUtils.toString(new FileReader(new File("TemplateName.java")));
-
-      FileWriter fileWriter =
-          new FileWriter(new File(iterator.get(integrationName) + "ApiController.java"));
+      String content = IOUtils.toString(new FileReader(new File("java.templateController")));
 
       String integration = IOUtils.toString(new FileReader(new File("IntegrationData.txt")));
 
-      String integrateString = IOUtils.toString(new FileReader(new File(
-          "/Users/prateekkoul/Downloads/spring-server-generated (1)/src/main/java/io/swagger/api/"
-              + iterator.get(integrationName) + "Api.java")));
+      String integrateString = IOUtils.toString(new FileReader(
+          new File("src/main/java/io/swagger/api/" + iterator.get(integrationName) + "Api.java")));
 
       String parameterData = IOUtils.toString(new FileReader(new File("ParameterData.txt")));
 
@@ -58,11 +50,10 @@ public class TemplateApi {
 
 
       //Script to generate  PROXY CODE(IntegrationNameProxy.java).
-      String proxyContent = IOUtils.toString(new FileReader(new File("TemplateProxyName.java")));
+      String proxyContent = IOUtils.toString(new FileReader(new File("java.templateProxy")));
 
-      FileWriter proxyFileWriter = new FileWriter(new File(
-          "/Users/prateekkoul/Downloads/spring-server-generated (1)/src/main/java/io/swagger/api/"
-              + iterator.get(integrationName) + "Proxy.java"));
+      FileWriter proxyFileWriter = new FileWriter(
+          new File("src/main/java/io/swagger/api/" + iterator.get(integrationName) + "Proxy.java"));
 
       String proxyData = IOUtils.toString(new FileReader(new File("ProxyData.txt")));
       proxyContent = proxyContent.replaceAll("proxyname",
@@ -183,23 +174,22 @@ public class TemplateApi {
         }
       }
       content = content.replaceAll("integrationData", stringBuilderIntegrate.toString());
-      fileWriter.write(content);
-      fileWriter.close();
 
       proxyContent = proxyContent.replaceAll("Data", stringBuilderProxy.toString());
       proxyFileWriter.write(proxyContent);
       proxyFileWriter.close();
 
+      //To generate controller
       FileWriter fooWriter = new FileWriter(new File(
-          "/Users/prateekkoul/Downloads/spring-server-generated (1)/src/main/java/io/swagger/api/"
-              + iterator.get(integrationName) + "ApiController.java"), false);
+          "src/main/java/io/swagger/api/" + iterator.get(integrationName) + "ApiController.java"),
+          false);
       fooWriter.write(content);
       fooWriter.close();
 
 
-      FileWriter integrateFile = new FileWriter(new File(
-          "/Users/prateekkoul/Downloads/spring-server-generated (1)/src/main/java/io/swagger/api/"
-              + iterator.get(integrationName) + "Api.java"), false);
+      FileWriter integrateFile = new FileWriter(
+          new File("src/main/java/io/swagger/api/" + iterator.get(integrationName) + "Api.java"),
+          false);
       integrateString = integrateString.replaceAll("Void", "String");
       integrateFile.write(integrateString);
       integrateFile.close();
