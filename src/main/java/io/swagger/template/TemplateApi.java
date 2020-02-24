@@ -190,12 +190,9 @@ public class TemplateApi {
       proxyFileWriter.write(proxyContent);
       proxyFileWriter.close();
 
-
-      File myFoo = new File(
+      FileWriter fooWriter = new FileWriter(new File(
           "/Users/prateekkoul/Downloads/spring-server-generated (1)/src/main/java/io/swagger/api/"
-              + iterator.get(integrationName) + "ApiController.java");
-
-      FileWriter fooWriter = new FileWriter(myFoo, false);
+              + iterator.get(integrationName) + "ApiController.java"), false);
       fooWriter.write(content);
       fooWriter.close();
 
