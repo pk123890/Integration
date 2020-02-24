@@ -31,7 +31,7 @@ public class TemplateApi {
 
       //Script to generate  CONTROLLER CODE(IntegrationNameAPI.java).
       String content = IOUtils.toString(new FileReader(new File("TemplateName.java")));
-      
+
       FileWriter fileWriter =
           new FileWriter(new File(iterator.get(integrationName) + "ApiController.java"));
 
@@ -56,6 +56,7 @@ public class TemplateApi {
       Class className =
           Class.forName("io.swagger.api." + iterator.get(integrationName) + "ApiController");
 
+
       //Script to generate  PROXY CODE(IntegrationNameProxy.java).
       String proxyContent = IOUtils.toString(new FileReader(new File("TemplateProxyName.java")));
 
@@ -74,6 +75,9 @@ public class TemplateApi {
       StringBuilder stringBuilderIntegrate = new StringBuilder();
       StringBuilder stringBuilderProxy = new StringBuilder();
       int i = 0;
+
+
+      //TO Generate Controller as well as Proxy APIs for a specific Integration.
       for (Method method : methodList) {
         StringBuilder stringBuilderParameter = new StringBuilder();
         StringBuilder stringBuilderFunctionParameter = new StringBuilder();
@@ -94,6 +98,8 @@ public class TemplateApi {
 
           Parameter[] parameters = method.getParameters();
           int j = 0;
+
+          //If there are some parameters for the API
           if (parameters.length != 0) {
             integrate = integrate.replaceAll("integrationspecific",
                 "return new ResponseEntity<String>(" + ((String) iterator.get(integrationName))
@@ -148,7 +154,10 @@ public class TemplateApi {
 
             i++;
 
-          } else {
+          }
+          //ELSE if there are no parameters for the API.
+
+          else {
 
             integrate = integrate.replaceAll("datatype", "");
 
