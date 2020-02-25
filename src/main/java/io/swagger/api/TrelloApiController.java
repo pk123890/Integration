@@ -32,11 +32,10 @@ public class TrelloApiController implements TrelloApi {
     }
 
 
-
     public ResponseEntity<String> trelloGetBoardNameGet(@ApiParam(value = "") @Valid @RequestParam(value = "idBoard", required = false) java.lang.String idBoard)
-{
-return new ResponseEntity<String>(trelloProxy.trelloGetBoardNameGet(idBoard), HttpStatus.OK);
-}
+    {
+        return new ResponseEntity<String>(trelloProxy.trelloGetBoardNameGet(idBoard), HttpStatus.OK);
+    }
 
 
 }
