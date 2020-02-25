@@ -32,16 +32,15 @@ public class SpotifyApiController implements SpotifyApi {
     }
 
 
-
     public ResponseEntity<String> spotifyGetFollowingGet(@ApiParam(value = "") @Valid @RequestParam(value = "type", required = false) java.lang.String type)
-{
-return new ResponseEntity<String>(spotifyProxy.spotifyGetFollowingGet(type), HttpStatus.OK);
-}
+    {
+        return new ResponseEntity<String>(spotifyProxy.spotifyGetFollowingGet(type), HttpStatus.OK);
+    }
 
-public ResponseEntity<String> spotifyUserDetailsGet(@ApiParam(value = "") @Valid @RequestParam(value = "user_id", required = false) java.lang.String user_id)
-{
-return new ResponseEntity<String>(spotifyProxy.spotifyUserDetailsGet(user_id), HttpStatus.OK);
-}
+    public ResponseEntity<String> spotifyUserDetailsGet(@ApiParam(value = "") @Valid @RequestParam(value = "user_id", required = false) java.lang.String user_id)
+    {
+        return new ResponseEntity<String>(spotifyProxy.spotifyUserDetailsGet(user_id), HttpStatus.OK);
+    }
 
 
 }
