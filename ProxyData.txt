@@ -1,2 +1,0 @@
-    MappingType(path)
-    String APIname(parameter);

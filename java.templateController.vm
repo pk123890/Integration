@@ -14,22 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-02-17T10:46:18.555Z[GMT]")
 @Controller
-public class NameApiController implements NameApi {
+public class $NameApiController implements $NameApi {
     @Autowired
-    Proxy proxyname
+    $Proxy $proxyname
 
-    private static final Logger log = LoggerFactory.getLogger(NameApiController.class);
+    private static final Logger log = LoggerFactory.getLogger($NameApiControllerclass);
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public NameApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public $NameApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
 
-integrationData
+$integrationData
 }

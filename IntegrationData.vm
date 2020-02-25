@@ -1,0 +1,4 @@
+    public ResponseEntity<String> $functionName($parameter)
+    {
+        $integrationspecific($functionParameter), HttpStatus.OK);
+    }
