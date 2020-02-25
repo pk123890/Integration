@@ -132,7 +132,7 @@ public class TemplateApi {
               j++;
             }
 
-            integrate = integrate.replaceAll("datatype", stringBuilderParameter.toString());
+            integrate = integrate.replaceAll("parameter", stringBuilderParameter.toString());
             integrate = integrate
                 .replaceAll("functionParameter", stringBuilderFunctionParameter.toString());
 
@@ -150,7 +150,7 @@ public class TemplateApi {
 
           else {
 
-            integrate = integrate.replaceAll("datatype", "");
+            integrate = integrate.replaceAll("parameter", "");
 
 
             integrate = integrate.replaceAll("integrationspecific",

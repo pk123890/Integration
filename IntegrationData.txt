@@ -1,4 +1,4 @@
-    public ResponseEntity<String> funtionName(datatype)
+    public ResponseEntity<String> funtionName(parameter)
     {
         integrationspecific
     }
